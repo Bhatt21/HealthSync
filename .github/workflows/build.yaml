@@ -16,7 +16,8 @@ jobs: # Jobs to be executed within the workflow
 
       # - name: Run unit tests # Step to run unit tests
       #   run: echo 'npm test' # Placeholder command for running tests (replace with actual test command)
-      - name: Build and Deploy
-        run:  docker login --username bhatt21 --password ${{secrets.ACCESS_TOKEN}} ghcr.io
-            docker build -t ghcr.io/bhatt21/healthsync:latest --file Dockerfile .  
-            docker push ghcr.io/bhatt21/healthsync:latest 
+      - name: Build and push the image
+        run: |
+            docker login --username Bhatt21 --password ${{secrets.ACCESS_TOKEN}} ghcr.io
+            docker build -t ghcr.io/bhatt21/health:latest --file Dockerfile .
+            docker push ghcr.io/bhatt21/health:latest
